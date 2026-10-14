@@ -1,0 +1,23 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "donatesaweria",
+  "main": "worker.js",
+  "compatibility_date": "2026-08-28",
+  "observability": { "enabled": true },
+
+  // Binding WAJIB bernama "DB" -- worker.js memanggil env.DB.
+  // database_id sengaja tidak diisi: tombol Deploy to Cloudflare akan membuat
+  // database D1 baru di akun customer lalu mengisi ID-nya secara otomatis.
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "wx-donate","database_id": "4165245e-cc25-445d-9dbe-fa821a7b73a1"
+    }
+  ],
+
+  // Bukan rahasia, jadi boleh di sini. Isi "1" untuk menyimpan payload webhook
+  // mentah ke tabel logs (berguna saat mendiagnosis platform baru).
+  "vars": {
+    "LOG_RAW": "0"
+  }
+}
